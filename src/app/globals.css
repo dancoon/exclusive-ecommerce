@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    padding: 0 1rem;
+    /* Adjust the padding as needed */
+    box-sizing: border-box;
+}
+
+.wrapper {
+    max-width: 85%;
+    /* Adjust the max-width as needed */
+    margin-left: auto;
+    margin-right: auto;
+}
