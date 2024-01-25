@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const Brand = () => {
-    return (
-        <div>
-            <h1 className="font-bold text-2xl">Exclusive</h1>
-        </div>
-    )
-}
+  return (
+    <div>
+      <h1 className="font-bold text-2xl">Exclusive</h1>
+    </div>
+  );
+};
 
-export default Brand
+export default Brand;
