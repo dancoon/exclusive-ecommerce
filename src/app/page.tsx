@@ -34,7 +34,7 @@ export default function Home() {
 
       <HomeSections name={"Our Products"} title={"Explore Our Products"}>
         <ProductList />
-        < ViewAllProducts btnName="View All Products" />
+        <ViewAllProducts btnName="View All Products" />
       </HomeSections>
     </main>
   );

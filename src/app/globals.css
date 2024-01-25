@@ -3,25 +3,25 @@
 @tailwind utilities;
 
 body {
-    margin: 0;
-    padding: 0 1rem;
-    /* Adjust the padding as needed */
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0 1rem;
+  /* Adjust the padding as needed */
+  box-sizing: border-box;
 }
 
 .wrapper {
-    max-width: 85%;
-    /* Adjust the max-width as needed */
-    margin-left: auto;
-    margin-right: auto;
+  max-width: 85%;
+  /* Adjust the max-width as needed */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* styles/OverflowExample.module.css */
 
 .visible {
-    opacity: 1;
+  opacity: 1;
 }
 
 .hidden {
-    opacity: 0;
+  opacity: 0;
 }

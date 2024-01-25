@@ -1,1 +1,1 @@
-export {default as ViewProductsBtn} from "./ViewAllProducts"
+export { default as ViewProductsBtn } from "./ViewAllProducts";

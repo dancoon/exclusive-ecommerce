@@ -39,7 +39,9 @@ const HomeSections: React.FC<Props> = ({
           {titleCase(title)}
         </h2>
         {hasTimer && <Timer />}
-        <div className=" absolute right-0">{hasRightButton && <ViewProductsBtn btnName={"View All"} />}</div>
+        <div className=" absolute right-0">
+          {hasRightButton && <ViewProductsBtn btnName={"View All"} />}
+        </div>
       </div>
       {children}
     </div>
