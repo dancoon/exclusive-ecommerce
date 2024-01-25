@@ -7,6 +7,7 @@ import StarRating from "./Rating";
 interface Props {
   image: string;
   discount?: number;
+  isNew?: boolean;
   title: string;
   current_price: number;
   before_price: number;
@@ -16,6 +17,7 @@ interface Props {
 const ProductCard: React.FC<Props> = ({
   image,
   discount,
+  isNew,
   title,
   current_price,
   before_price,
@@ -32,6 +34,11 @@ const ProductCard: React.FC<Props> = ({
             {"-" + discount + " %"}
           </span>
         )}
+        {isNew && (
+          <span className="bg-green-600 text-white absolute top-14 p-1 rounded left-3">
+            NEW
+          </span>
+        )}
         <div className="absolute right-3 top-2">
           <HeartIcon />
           <EyeIcon />
@@ -40,9 +47,11 @@ const ProductCard: React.FC<Props> = ({
       <h3 className="font-medium my-1">{title}</h3>
       <div className="flex gap-2">
         <span className="text-red-secondary">{"$" + current_price}</span>
-        <span className="text-gray-400 font-medium line-through">
-          {"$" + before_price}
-        </span>
+        {discount && (
+          <span className="text-gray-400 font-medium line-through">
+            {"$" + before_price}
+          </span>
+        )}
       </div>
       <StarRating rating={rating} />
     </div>

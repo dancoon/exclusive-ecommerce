@@ -52,6 +52,14 @@ const ProductList = () => {
       discount: 35,
       rating: 4,
     },
+    {
+      title: "Breed Dry Dog Food",
+      image: "/products/cesar.png",
+      current_price: 100,
+      before_price: 0,
+      discount: 0,
+      rating: 4,
+    },
   ];
 
   return (

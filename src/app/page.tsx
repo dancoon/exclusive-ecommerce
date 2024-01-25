@@ -1,3 +1,4 @@
+import ArrivalBanner from "../components/banner/ArrivalBanner";
 import CategoryBanner from "../components/banner/CategoryBanner";
 import ViewAllProducts from "../components/buttons/ViewAllProducts";
 import CategoriesList from "../components/categories/CategoriesList";
@@ -35,6 +36,10 @@ export default function Home() {
       <HomeSections name={"Our Products"} title={"Explore Our Products"}>
         <ProductList />
         <ViewAllProducts btnName="View All Products" />
+      </HomeSections>
+
+      <HomeSections name={"Featured"} title={"New Arrival"}>
+        <ArrivalBanner />
       </HomeSections>
     </main>
   );
