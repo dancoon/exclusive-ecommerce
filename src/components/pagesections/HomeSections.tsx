@@ -1,8 +1,6 @@
 import { titleCase } from "@/src/utils";
 import React from "react";
 import Timer from "./Timer";
-import Button from "@/src/ui/Button";
-import ViewAllProducts from "../buttons/ViewAllProducts";
 import { ViewProductsBtn } from "../buttons";
 
 interface Props {

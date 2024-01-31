@@ -1,7 +1,8 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import React from "react";
 import Link from "next/link";
 import { ArrowPointerIcon } from "@/src/ui/Icons";
+import ShopNow from "../custom_links";
 
 const HeroSection = () => {
   return (
@@ -32,12 +33,7 @@ const HeroSection = () => {
             <span className="block mt-3">off voucher</span>
           </p>
           <span className="flex">
-            <Link
-              href=""
-              className="text-white mr-2 font-medium underline underline-offset-8"
-            >
-              Shop Now
-            </Link>
+            <ShopNow />
             <ArrowPointerIcon />
           </span>
         </div>
@@ -46,6 +42,7 @@ const HeroSection = () => {
           width={500}
           height={500}
           alt={""}
+          priority
           className="absolute right-0"
         />
       </div>

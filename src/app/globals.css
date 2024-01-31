@@ -4,8 +4,7 @@
 
 body {
   margin: 0;
-  padding: 0 1rem;
-  /* Adjust the padding as needed */
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -14,14 +13,4 @@ body {
   /* Adjust the max-width as needed */
   margin-left: auto;
   margin-right: auto;
-}
-
-/* styles/OverflowExample.module.css */
-
-.visible {
-  opacity: 1;
-}
-
-.hidden {
-  opacity: 0;
 }
