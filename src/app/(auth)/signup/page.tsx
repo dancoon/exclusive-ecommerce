@@ -8,6 +8,7 @@ import Spinner from "@/src/ui/Spinner";
 import { useSignUpMutation } from "@/src/redux/features/authApiSlice";
 import { toast } from "react-toastify";
 import { HiEye, HiEyeOff } from "react-icons/hi";
+import validate from "./validation";
 
 function Signup() {
   const router = useRouter();
@@ -22,6 +23,8 @@ function Signup() {
     password: false,
     re_password: false,
   });
+  const [errors, setErrors] = useState({});
+  const [isValid, setIsValid] = useState(false);
 
   const formInputs: Array<{
     input_name: keyof typeof formData;
@@ -65,16 +68,23 @@ function Signup() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setErrors(validate(formData));
+    setIsValid(Object.values(errors).some((error) => error !== ""));
 
-    signUp({ ...formData })
-      .unwrap()
-      .then(() => {
-        toast.success("Activation email was sent to your email account!!");
-        router.push("/auth/login");
-      })
-      .catch(() => {
-        toast.error("Registration failed!!");
-      });
+    if (isValid) {
+      // console.log("Form is valid");
+      signUp({ ...formData })
+        .unwrap()
+        .then(() => {
+          toast.success("Activation email was sent to your email account!!");
+          router.push("/activate");
+        })
+        .catch(() => {
+          toast.error("Registration failed!!");
+        });
+    } else {
+      // console.log("Form is invalid");
+    }
   };
   return (
     <div className="mt-12 flex items-center">
@@ -110,10 +120,16 @@ function Signup() {
                   size={20}
                 />
               ))}
+            {errors[input_name as keyof typeof errors] && (
+              <p className="text-red-500 text-sm">
+                {errors[input_name as keyof typeof errors]}
+              </p>
+            )}
           </div>
         ))}
 
         <button
+          disabled={isLoading}
           type="submit"
           className="bg-red-secondary text-white p-3 rounded block w-full"
         >
