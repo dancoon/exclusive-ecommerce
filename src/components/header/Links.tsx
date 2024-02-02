@@ -7,7 +7,7 @@ const Links = () => {
       <Link href="/">Home</Link>
       <Link href="/contact">Contact</Link>
       <Link href="/about">About</Link>
-      <Link href="/auth/signup">Sign Up</Link>
+      <Link href="/signup">Sign Up</Link>
     </ul>
   );
 };

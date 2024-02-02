@@ -8,6 +8,7 @@ import Spinner from "@/src/ui/Spinner";
 import { useSignUpMutation } from "@/src/redux/features/authApiSlice";
 import { toast } from "react-toastify";
 
+
 const SignupForm = () => {
   const router = useRouter();
   const [signUp, { isLoading }] = useSignUpMutation();
@@ -53,11 +54,10 @@ const SignupForm = () => {
     });
   };
 
-  // Form submission handler
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    signUp({ ...formData }) // Pass the entire formData object
+    signUp({ ...formData })
       .unwrap()
       .then(() => {
         toast.success("Activation email was sent to your email account!!");

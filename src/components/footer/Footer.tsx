@@ -7,13 +7,13 @@ import { FaceBookIcon, XIcon } from "@/src/ui/Icons";
 const Footer = () => {
   return (
     <div className="text-white bg-black mt-28 px-20 pt-4 flex justify-between">
-      <div className=" space-y-4 p-3">
+      <div className=" space-y-2 p-3">
         <h2 className="text-2xl font-bold">Exclusive</h2>
         <h3 className="text-xl font-medium"> Subscribe</h3>
         <p>Get 10% off your first order</p>
         <Email />
       </div>
-      <div className=" space-y-4 p-3">
+      <div className=" space-y-2 p-3">
         <h2 className="text-2xl font-bold">Support</h2>
         <p>
           111 Bijoy sarani, Dhaka,
@@ -22,7 +22,7 @@ const Footer = () => {
         <h3>exclusive@gmail.com</h3>
         <h3>+88015-88888-9999</h3>
       </div>
-      <div className=" space-y-4 p-3">
+      <div className=" space-y-2 p-3">
         <h2 className="text-2xl font-bold">Account</h2>
         <Link href={""} className="block">
           My Account
@@ -40,7 +40,7 @@ const Footer = () => {
           Shop
         </Link>
       </div>
-      <div className=" space-y-4 p-3">
+      <div className=" space-y-2 p-3">
         <h2 className="text-2xl font-bold"> Quick Link</h2>
         <Link href={""} className="block">
           Privacy Policy
@@ -55,7 +55,7 @@ const Footer = () => {
           Contact
         </Link>
       </div>
-      <div className=" space-y-4 p-3">
+      <div className=" space-y-2 p-3">
         <h2 className="text-2xl font-bold">Download App</h2>
         <div>
           <p className="text-white-secondary text-xs font-medium">
@@ -63,7 +63,7 @@ const Footer = () => {
           </p>
           <div className="flex justify-between space-x-2 items-center mt-1">
             <div>QR CODE HERE</div>{" "}
-            <div className="flex-row space-y-4">
+            <div className="flex-row space-y-2">
               <Image src={"/playstore.png"} alt={""} width={100} height={100} />
               <Image
                 src={"/applestore.png"}

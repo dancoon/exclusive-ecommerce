@@ -1,6 +1,5 @@
 import Image from "next/legacy/image";
 import React from "react";
-import Link from "next/link";
 import { ArrowPointerIcon } from "@/src/ui/Icons";
 import ShopNow from "../custom_links";
 
@@ -39,8 +38,8 @@ const HeroSection = () => {
         </div>
         <Image
           src="/iphone 14 hero.png"
-          width={500}
-          height={500}
+          width={350}
+          height={350}
           alt={""}
           priority
           className="absolute right-0"
