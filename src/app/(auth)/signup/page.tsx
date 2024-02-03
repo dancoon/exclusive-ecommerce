@@ -9,8 +9,11 @@ import { useSignUpMutation } from "@/src/redux/features/authApiSlice";
 import { toast } from "react-toastify";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import validate from "./validation";
+import { setRegisterData } from "@/src/redux/features/authSlice";
+import { useAppDispatch } from "@/src/redux/hooks";
 
 function Signup() {
+  const dispatch = useAppDispatch();
   const router = useRouter();
   const [signUp, { isLoading }] = useSignUpMutation();
   const [formData, setFormData] = useState({
@@ -24,7 +27,7 @@ function Signup() {
     re_password: false,
   });
   const [errors, setErrors] = useState({});
-  const [isValid, setIsValid] = useState(false);
+  const [isValid, setIsValid] = useState(true);
 
   const formInputs: Array<{
     input_name: keyof typeof formData;
@@ -71,8 +74,8 @@ function Signup() {
     setErrors(validate(formData));
     setIsValid(Object.values(errors).some((error) => error !== ""));
 
-    if (isValid) {
-      // console.log("Form is valid");
+    if (Object.values(errors).some((error) => error !== "") || isValid) {
+      console.log("Form is valid");
       signUp({ ...formData })
         .unwrap()
         .then(() => {
@@ -82,8 +85,10 @@ function Signup() {
         .catch(() => {
           toast.error("Registration failed!!");
         });
+      const { email } = formData;
+      dispatch(setRegisterData({ email, isActivated: false }));
     } else {
-      // console.log("Form is invalid");
+      console.log("Form is invalid");
     }
   };
   return (

@@ -30,7 +30,7 @@ const validate = (values: Ivalues) => {
         errors.email = 'Email is invalid';
     }
 
-    if (!values.password) {
+    if (!values.password || values.password === '') {
         errors.password = 'Password is required';
     } else if (values.password.length < 8) {
         errors.password = 'Password must be 6 or more characters';
