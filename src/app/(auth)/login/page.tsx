@@ -7,8 +7,11 @@ import validate from "./validation";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { HiEye, HiEyeOff } from "react-icons/hi";
+import { useAppDispatch } from "@/src/redux/hooks";
+import { setAuth } from "@/src/redux/features/authSlice";
 
 function Login() {
+  const dispatch = useAppDispatch();
   const router = useRouter();
   const [logIn, { isLoading }] = useLoginMutation();
   const [formData, setFormData] = useState({
@@ -54,18 +57,20 @@ function Login() {
     const isValid = Object.values(errors).every((error) => error === "");
 
     if (isValid) {
-      console.log("Form is valid");
+      // console.log("Form is valid");
       logIn({ ...formData })
         .unwrap()
         .then(() => {
           toast.success("Logged in successfully!!");
           router.push("/profile");
+          dispatch(setAuth());
+
         })
         .catch(() => {
           toast.error("Login failed!!");
         });
     } else {
-      console.log("Form is invalid");
+      // console.log("Form is invalid");
     }
   };
 

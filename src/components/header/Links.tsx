@@ -10,7 +10,7 @@ const Links = () => {
       <Link href="/">Home</Link>
       <Link href="/contact">Contact</Link>
       <Link href="/about">About</Link>
-      { isAuthenticated && <Link href="/signup">Sign Up</Link>}
+      {!isAuthenticated && <Link href="/signup">Sign Up</Link>}
     </ul>
   );
 };

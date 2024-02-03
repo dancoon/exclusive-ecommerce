@@ -1,6 +1,5 @@
 require('dotenv').config()
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { CreateApi } from '@reduxjs/toolkit/query'
 import type {
     BaseQueryFn,
     FetchArgs,
@@ -27,7 +26,7 @@ const baseQueryWithReauth: BaseQueryFn<
             try {
                 const refreshResult = await baseQuery(
                     {
-                        url: "/auth/jwt/refresh",
+                        url: "/auth/jwt/refresh/",
                         method: "POST"
                     },
                     api,
