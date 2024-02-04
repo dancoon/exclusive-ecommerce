@@ -1,38 +1,55 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface AuthState {
-    isAuthenticated: boolean,
-    isLoading: boolean,
-    registerData: RegisterData
-}
-
-interface RegisterData {
-    email: string,
-    isActivated: boolean,
+  isAuthenticated: boolean;
+  isLoggedOut: boolean;
+  isActivated: boolean;
+  isLoading: boolean;
+  user: {
+    email: string;
+    name: string;
+  };
 }
 
 const initialState = {
-    isAuthenticated: false,
-    isLoading: true,
-    registerData: {
-        email: '',
-        isActivated: false,
-    }
-} as AuthState
+  isAuthenticated: false,
+  isLoggedOut: true,
+  isActivated: false,
+  isLoading: true,
+  user: {
+    email: "",
+    name: "",
+  },
+} as AuthState;
 
 const authSlice = createSlice({
-    name: "auth",
-    initialState,
-    reducers: {
-        setAuth: state => { state.isAuthenticated = true; },
-        logout: state => { state.isLoading = false },
-        finishInitialLoad: state => { state.isLoading = false },
-        setRegisterData: (state, action) => {
-            state.registerData.email = action.payload.email
-            state.registerData.isActivated = action.payload.isActivated
-        }
-    }
-})
+  name: "auth",
+  initialState,
+  reducers: {
+    setAuth: (state) => {
+      state.isAuthenticated = true;
+      state.isLoggedOut = false;
+    },
+    logout: (state) => {
+      state.isAuthenticated = false;
+      state.isLoggedOut = true;
+      state.user.email = "";
+      state.user.name = "";  
+    },
+    finishInitialLoad: (state) => {
+      state.isLoading = false;
+    },
+    setUser: (state, action) => {
+      const { email, name } = action.payload;
+      state.user.email = email;
+      state.user.name = name;
+    },
+    setActivated: (state) => {
+      state.isActivated = true;
+    },
+  },
+});
 
-export const { setAuth, logout, finishInitialLoad, setRegisterData } = authSlice.actions
-export default authSlice.reducer
+export const { setAuth, logout, finishInitialLoad, setUser, setActivated } =
+  authSlice.actions;
+export default authSlice.reducer;

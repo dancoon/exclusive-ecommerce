@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import { useAppDispatch } from "@/src/redux/hooks";
-import { setAuth } from "@/src/redux/features/authSlice";
+import { setAuth, setUser } from "@/src/redux/features/authSlice";
 
 function Login() {
   const dispatch = useAppDispatch();
@@ -64,6 +64,7 @@ function Login() {
           toast.success("Logged in successfully!!");
           router.push("/profile");
           dispatch(setAuth());
+          dispatch(setUser({ email: formData.email}));
 
         })
         .catch(() => {

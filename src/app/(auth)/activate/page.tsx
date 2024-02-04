@@ -10,7 +10,7 @@ const Page = () => {
   const [resendActivationEmail, { isLoading }] =
     useResendActivationEmailMutation();
   
-  const email = useAppSelector((state) => state.auth.registerData.email);
+  const email = useAppSelector((state) => state.auth.user.email);
 
   const handleOnClick = () => {
     console.log(email);

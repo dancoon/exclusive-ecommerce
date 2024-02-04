@@ -28,7 +28,7 @@ const Footer = () => {
           My Account
         </Link>
         <Link href={""} className="block">
-          Login / Register
+          Login / Signup
         </Link>
         <Link href={""} className="block">
           Cart

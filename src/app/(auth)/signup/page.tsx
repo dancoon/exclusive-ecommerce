@@ -9,8 +9,8 @@ import { useSignUpMutation } from "@/src/redux/features/authApiSlice";
 import { toast } from "react-toastify";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import validate from "./validation";
-import { setRegisterData } from "@/src/redux/features/authSlice";
 import { useAppDispatch } from "@/src/redux/hooks";
+import { setUser } from "@/src/redux/features/authSlice";
 
 function Signup() {
   const dispatch = useAppDispatch();
@@ -86,7 +86,7 @@ function Signup() {
           toast.error("Registration failed!!");
         });
       const { email } = formData;
-      dispatch(setRegisterData({ email, isActivated: false }));
+      dispatch(setUser({ email }));
     } else {
       console.log("Form is invalid");
     }

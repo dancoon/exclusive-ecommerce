@@ -3,26 +3,42 @@
 
 import { useActivateAccountMutation } from "@/src/redux/features/authApiSlice";
 import Spinner from "@/src/ui/Spinner";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useAppDispatch } from "@/src/redux/hooks";
+import { setActivated } from "@/src/redux/features/authSlice";
 
 const Page = ({ params }: { params: { uid: string; token: string } }) => {
   const [activate, { isLoading }] = useActivateAccountMutation();
   const router = useRouter();
+  const dispatch = useAppDispatch();
+
+  const [effectTriggered, setEffectTriggered] = useState(false);
 
   useEffect(() => {
-    activate(params)
-      .unwrap()
-      .then(() => {
-        toast.success("Account has been activated successfully");
-        router.push("/login");
-      })
-      .catch((error) => {
-        toast.error(error.data.detail);
-      });
-  }, []);
+    // Check if the effect has already been triggered
+    if (!effectTriggered) {
+      // Update the flag to indicate that the effect is now triggered
+      setEffectTriggered(true);
+
+      // Define an async function to be able to use await
+      const activateAccount = async () => {
+        try {
+          const response = await activate(params).unwrap();
+          toast.success("Account has been activated successfully");
+          dispatch(setActivated());
+          router.push("/login");
+        } catch (error: any) {
+          toast.error((error as { data: { detail: string } }).data.detail);
+        }
+      };
+
+      // Call the async function
+      activateAccount();
+    }
+  }, [effectTriggered]); // Add effectTriggered to the dependency array
 
   return (
     <div className="mt-12 flex items-center">
