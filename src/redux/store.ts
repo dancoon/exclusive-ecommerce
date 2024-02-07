@@ -31,8 +31,8 @@ export const persistor = persistStore(store);
 store.subscribe(() => {
   const state = store.getState();
   if (state.auth.isLoggedOut === true) {
-    persistor.purge();
-    store.dispatch({ type: "RESET" });
+    // persistor.purge();
+    // store.dispatch({ type: "RESET" });
   }
 });
 
