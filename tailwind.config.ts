@@ -10,6 +10,7 @@ const config: Config = {
       colors: {
         "red-secondary": "#DB4444",
         "white-secondary": "#F5F5F5",
+        "tansparent": "#000000"
       },
     },
   },
