@@ -1,12 +1,14 @@
 "use client";
 import React from "react";
 import classNames from "classnames";
+import { root } from "postcss";
 
 interface ButtonProps {
   name: string;
   bgColor: string;
   textColor: string;
   width?: number;
+  rounded?: boolean;
   onclick?: () => void;
 }
 
@@ -15,6 +17,7 @@ const Button: React.FC<ButtonProps> = ({
   bgColor,
   textColor,
   width,
+  rounded,
   onclick,
 }) => {
   const classes: string = classNames({
@@ -24,6 +27,7 @@ const Button: React.FC<ButtonProps> = ({
     "text-white": textColor === "text-white",
     "text-black": textColor === "text-black",
     "p-4 rounded my-4": true,
+    "rounded border border-black": rounded,
   });
   return (
     <button className={classes} onClick={onclick}>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { FaRegStar } from "react-icons/fa";
 import { FiUser } from "react-icons/fi";
@@ -29,10 +30,10 @@ const ManageProfile = () => {
     <ul className="absolute top-24 right-32 z-50 rounded bg-rose-500 bg-opacity-80 text-white p-2">
       {options.map((option, index) => (
         <li key={index} className="pl-4 pr-4 p-1">
-          <a href={option.href} className="flex">
+          <Link href={option.href} className="flex">
             <span className="mr-4">{option.icon}</span>
             {option.name}
-          </a>
+          </Link>
         </li>
       ))}
     </ul>

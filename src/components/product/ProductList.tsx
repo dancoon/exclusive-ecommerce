@@ -10,7 +10,11 @@ interface Product {
   rating: number;
 }
 
-const ProductList = () => {
+interface Props {
+  isWishlist?: boolean;
+}
+
+const ProductList: React.FC<Props> = ({isWishlist}) => {
   const products: Product[] = [
     {
       title: "HAVIT HV-G92 Gamepad",
@@ -66,7 +70,7 @@ const ProductList = () => {
     <ul className="flex gap-10 overflow-x-auto my-2">
       {products.map((product, index) => (
         <li className="" key={index}>
-          <ProductCard {...product} />
+          <ProductCard {...product} isInWishlist={isWishlist} />
         </li>
       ))}
     </ul>

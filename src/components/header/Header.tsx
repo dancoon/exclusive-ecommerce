@@ -7,9 +7,17 @@ import WishlistIcon from "./WishlistIcon";
 import { CartIcon } from "@/src/ui/Icons";
 import ProfileIcon from "./ProfileIcon";
 import { useAppSelector } from "@/src/redux/hooks";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Header = () => {
   const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
+  // const router = ;
+
+  const handleWishListIconClick: () => void = () => {
+    // router.push("/wishlist");
+  };
+
   console.log(isAuthenticated);
   return (
     <nav className="flex justify-between p-4 border-b-2 mt-6 items-center pr-32 pl-32">
@@ -17,7 +25,10 @@ const Header = () => {
       <Links />
       <div className="flex items-center gap-4">
         <Search />
-        <WishlistIcon />
+        <Link href={"/wishlist"}>
+          <WishlistIcon />
+        </Link>
+
         <CartIcon />
         {isAuthenticated && <ProfileIcon />}
       </div>

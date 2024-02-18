@@ -3,6 +3,7 @@ import React from "react";
 import HeartIcon from "./HeartIcon";
 import EyeIcon from "./EyeIcon";
 import StarRating from "./Rating";
+import { IoTrashOutline } from "react-icons/io5";
 
 interface Props {
   image: string;
@@ -12,6 +13,7 @@ interface Props {
   current_price: number;
   before_price: number;
   rating: number;
+  isInWishlist?: boolean;
 }
 
 const ProductCard: React.FC<Props> = ({
@@ -22,6 +24,7 @@ const ProductCard: React.FC<Props> = ({
   current_price,
   before_price,
   rating,
+  isInWishlist,
 }) => {
   return (
     <div className="my-6 min-w-[270px] flex flex-col">
@@ -40,8 +43,17 @@ const ProductCard: React.FC<Props> = ({
           </span>
         )}
         <div className="absolute right-3 top-2">
-          <HeartIcon />
-          <EyeIcon />
+          {!isInWishlist && (
+            <>
+              <HeartIcon />
+              <EyeIcon />
+            </>
+          )}
+          {isInWishlist && (
+            <div className=" bg-white-secondary rounded-full p-2 mt-4">
+              <IoTrashOutline size={24} />
+            </div>
+          )}
         </div>
       </div>
       <h3 className="font-medium my-1">{title}</h3>
@@ -53,7 +65,7 @@ const ProductCard: React.FC<Props> = ({
           </span>
         )}
       </div>
-      <StarRating rating={rating} />
+      {!isInWishlist && <StarRating rating={rating} />}
     </div>
   );
 };
