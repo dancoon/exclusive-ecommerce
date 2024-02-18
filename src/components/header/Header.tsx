@@ -25,11 +25,22 @@ const Header = () => {
       <Links />
       <div className="flex items-center gap-4">
         <Search />
-        <Link href={"/wishlist"}>
-          <WishlistIcon />
-        </Link>
-
-        <CartIcon />
+        <div className="relative">
+          <span className=" bg-red-secondary text-white rounded-full text-center absolute -top-2 -right-3 h-6 w-6">
+            4
+          </span>
+          <Link href={"/wishlist"}>
+            <WishlistIcon />
+          </Link>
+        </div>
+        <div className="relative">
+          <span className=" bg-red-secondary text-white rounded-full text-center absolute -top-2 -right-3 h-6 w-6">
+            3
+          </span>
+          <Link href={"/cart"}>
+            <CartIcon />
+          </Link>
+        </div>
         {isAuthenticated && <ProfileIcon />}
       </div>
     </nav>
