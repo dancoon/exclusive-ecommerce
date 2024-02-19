@@ -38,7 +38,7 @@ const Page = ({ params }: { params: { uid: string; token: string } }) => {
       // Call the async function
       activateAccount();
     }
-  }, [effectTriggered]); // Add effectTriggered to the dependency array
+  }, []); // Add effectTriggered to the dependency array
 
   return (
     <div className="mt-12 flex items-center">
