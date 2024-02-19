@@ -20,7 +20,7 @@ const ProfileIcon = () => {
       <div className={classes} onClick={handleDisplayMenu}>
         <FiUser size={30} />
       </div>
-      {displayMenu && <ManageProfile />}
+      {displayMenu && <ManageProfile setDisplayMenu={setDisplayMenu}/>}
     </>
   );
 };

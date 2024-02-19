@@ -12,6 +12,7 @@ import {
   persistStore,
 } from "redux-persist";
 import storage from "./storage";
+import { setupListeners } from "@reduxjs/toolkit/query";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -31,14 +32,11 @@ const makeStore = () =>
     reducer: persistedReducer,
     devTools: process.env.NODE_ENV !== "production",
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({
-        serializableCheck: {
-          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-        },
-      }),
+      getDefaultMiddleware().concat(apiSlice.middleware),
   });
 
 export const store = makeStore();
+setupListeners(store.dispatch);
 export const persistor = persistStore(store);
 export const purgeData = async () => {
   await persistor.purge();

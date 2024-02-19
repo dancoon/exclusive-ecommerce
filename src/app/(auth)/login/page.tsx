@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import { useAppDispatch } from "@/src/redux/hooks";
 import { setAuth, setUser } from "@/src/redux/features/authSlice";
+import Spinner from "@/src/ui/Spinner";
 
 function Login() {
   const dispatch = useAppDispatch();
@@ -52,20 +53,18 @@ function Login() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setErrors(validate(formData.email)); 
+    setErrors(validate(formData.email));
 
     const isValid = Object.values(errors).every((error) => error === "");
 
     if (isValid) {
-      // console.log("Form is valid");
       logIn({ ...formData })
         .unwrap()
         .then(() => {
           toast.success("Logged in successfully!!");
           router.push("/profile");
           dispatch(setAuth());
-          dispatch(setUser({ email: formData.email}));
-
+          dispatch(setUser({ email: formData.email }));
         })
         .catch(() => {
           toast.error("Login failed!!");
@@ -111,8 +110,8 @@ function Login() {
         ))}
 
         <div className="flex items-center justify-between">
-          <button className="bg-red-secondary text-white px-10 p-3 rounded block">
-            Log In
+          <button className="bg-red-secondary text-white px-10 p-3 rounded block" disabled={isLoading}>
+            {isLoading ? <Spinner /> : "Log In"}
           </button>
           <Link href={""} className="text-red-secondary">
             Forgot Password?
