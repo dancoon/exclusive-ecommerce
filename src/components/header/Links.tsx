@@ -11,6 +11,8 @@ const Links = () => {
       <Link href="/contact">Contact</Link>
       <Link href="/about">About</Link>
       {!isAuthenticated && <Link href="/signup">Sign Up</Link>}
+      {!isAuthenticated && <Link href="/login">Log In</Link>}
+
     </ul>
   );
 };

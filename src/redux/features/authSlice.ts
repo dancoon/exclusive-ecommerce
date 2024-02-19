@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { PURGE } from "redux-persist";
 
 interface AuthState {
   isAuthenticated: boolean;
@@ -27,9 +28,7 @@ const authSlice = createSlice({
     setAuth: (state) => {
       state.isAuthenticated = true;
     },
-    logout: (state) => {
-      // state.isAuthenticated = false;
-    },
+    logout: (state) => {},
     finishInitialLoad: (state) => {
       state.isLoading = false;
     },
@@ -41,6 +40,11 @@ const authSlice = createSlice({
     setActivated: (state) => {
       state.isActivated = true;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(PURGE, (state) => {
+      return initialState;
+    });
   },
 });
 

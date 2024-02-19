@@ -6,7 +6,16 @@ import { MdOutlineCancel } from "react-icons/md";
 import { PiShoppingBagOpen } from "react-icons/pi";
 import { TbLogout2 } from "react-icons/tb";
 
-const ManageProfile = () => {
+interface Props {
+  setDisplayMenu: (a: boolean) => void;
+}
+
+const ManageProfile: React.FC<Props> = ({ setDisplayMenu }) => {
+  const handleClick = () => {
+    setTimeout(() => {
+      setDisplayMenu(false);
+    }, 1000);
+  };
   const options = [
     {
       name: "Manage Profile",
@@ -29,7 +38,7 @@ const ManageProfile = () => {
   return (
     <ul className="absolute top-24 right-32 z-50 rounded bg-rose-500 bg-opacity-80 text-white p-2">
       {options.map((option, index) => (
-        <li key={index} className="pl-4 pr-4 p-1">
+        <li key={index} className="pl-4 pr-4 p-1" onClick={handleClick}>
           <Link href={option.href} className="flex">
             <span className="mr-4">{option.icon}</span>
             {option.name}
