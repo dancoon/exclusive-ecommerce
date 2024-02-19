@@ -14,7 +14,7 @@ const ManageProfile: React.FC<Props> = ({ setDisplayMenu }) => {
   const handleClick = () => {
     setTimeout(() => {
       setDisplayMenu(false);
-    }, 1000);
+    }, 500);
   };
   const options = [
     {
