@@ -17,8 +17,6 @@ const Header = () => {
   const handleWishListIconClick: () => void = () => {
     // router.push("/wishlist");
   };
-
-  console.log(isAuthenticated);
   return (
     <nav className="flex justify-between p-4 border-b-2 mt-6 items-center pr-32 pl-32">
       <Brand />
