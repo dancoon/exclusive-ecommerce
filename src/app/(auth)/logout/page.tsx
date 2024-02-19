@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { toast } from "react-toastify";
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
 
   const handleSignOut = () => {
@@ -85,4 +85,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
